@@ -1,0 +1,21 @@
+# Claude Code project files
+.claude/
+
+# Original raw frames + zip — only the transparent versions are needed for the site
+Cow/
+Cow-*.zip
+
+# Original / unused images
+mascot.png
+ChatGPT Image*.png
+
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor noise
+*.swp
+*.bak
+.vscode/
+.idea/

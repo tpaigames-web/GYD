@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GYD Marketing · 管一点营销 — Grow Your Dream</title>
+<meta name="description" content="GYD Marketing 管一点营销 · 新山数字营销公司 · 社交媒体广告 / Google 广告 / 网站设计 / 品牌策划 / 视频内容" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;600&family=Noto+Serif+SC:wght@700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #fffaf3;
+    --fg: #1a1611;
+    --accent: #ff5b1f;
+    --accent-soft: #ffe6d4;
+    --muted: #8a8477;
+    --line: rgba(26,22,17,0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    cursor: none;
+    transition: background-color 0.7s ease, color 0.7s ease;
+  }
+
+  /* === POST-FLASH ORANGE THEME — body.flash-done flips palette === */
+  body.flash-done {
+    --bg: #ff5b1f;
+    --fg: #fffaf3;
+    --accent: #fffaf3;
+    --accent-soft: rgba(255,255,255,0.14);
+    --muted: rgba(255,250,243,0.65);
+    --line: rgba(255,250,243,0.22);
+    background: var(--bg);
+    color: var(--fg);
+  }
+  body.flash-done .nav { background: rgba(255,91,31,0.7); border-bottom-color: rgba(255,255,255,0.18); }
+  body.flash-done .nav-cta { background: #fffaf3; color: #ff5b1f; }
+  body.flash-done .nav-cta:hover { background: #1a1611; color: #fffaf3; }
+  body.flash-done .feature { background: rgba(255,255,255,0.05); }
+  body.flash-done .feature:hover { background: rgba(255,255,255,0.13); }
+  body.flash-done .feature .num { color: #fffaf3; }
+  body.flash-done .marquee { background: var(--bg); }
+  body.flash-done .work-card { background: rgba(0,0,0,0.25); box-shadow: 0 14px 40px rgba(0,0,0,0.18); }
+  body.flash-done .progress { background: #fffaf3; }
+  body.flash-done h2 .cn { color: rgba(255,255,255,0.75); }
+  body.flash-done .stat { border-top-color: rgba(255,250,243,0.3); }
+  body.flash-done .stat .num .small { color: #fffaf3; opacity: 0.6; }
+  body.flash-done .step .dot { background: #fffaf3; }
+  body.flash-done .contact-form button { border-color: #fffaf3; color: #fffaf3; }
+  body.flash-done .contact-form button:hover { background: #fffaf3; color: #ff5b1f; }
+  body.flash-done .contact-form input,
+  body.flash-done .contact-form select,
+  body.flash-done .contact-form textarea { color: #fffaf3; border-bottom-color: rgba(255,250,243,0.3); }
+  body.flash-done .contact-form input::placeholder,
+  body.flash-done .contact-form textarea::placeholder { color: rgba(255,250,243,0.55); }
+  body.flash-done .cta .btn { border-color: #fffaf3; color: #fffaf3; }
+  body.flash-done .cta .btn:hover { background: #fffaf3; color: #ff5b1f; }
+  body.flash-done footer { border-top-color: rgba(255,250,243,0.18); color: rgba(255,250,243,0.7); }
+  body.flash-done .logo-strip { border-color: rgba(255,250,243,0.18); opacity: 0.7; }
+  body.flash-done .logo-strip .brand { color: rgba(255,250,243,0.7); }
+  body.flash-done .features { background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.18); }
+  body.flash-done .nav-cta,
+  body.flash-done .cta .btn,
+  body.flash-done .contact-form button { transition: background 0.3s, color 0.3s; }
+
+  /* === FULL-SCREEN CARD STACK (services section) — 6 service cards stacked in 3D.
+     The .cards-stage takes its own viewport block (sits BELOW the title), then is pinned
+     so the cards transition through their states as user scrolls inside the pin. === */
+  .cards-stage {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);  /* break out of section padding to fill viewport width */
+    height: 100vh;
+    perspective: 1800px;
+    perspective-origin: 50% 50%;
+    overflow: visible;
+    z-index: 4;
+    margin-top: 80px;
+  }
+  .cards-deck {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    pointer-events: none;
+  }
+  .svc-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 88vw;
+    max-width: 1180px;
+    height: 60vh;
+    max-height: 580px;
+    transform: translate(-50%, -50%);
+    transform-origin: 50% 50%;
+    border-radius: 24px;
+    padding: 56px 64px;
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    background: linear-gradient(135deg, #ff5b1f 0%, #ff8a4d 100%);
+    color: #fffaf3;
+    box-shadow: 0 40px 80px rgba(26,22,17,0.16), inset 0 0 0 1px rgba(255,255,255,0.18);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    pointer-events: auto;
+  }
+  .svc-card .num-big {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(160px, 22vw, 360px);
+    line-height: 0.82;
+    color: rgba(255,255,255,0.92);
+    flex-shrink: 0;
+    text-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  }
+  .svc-card .text { flex: 1; }
+  .svc-card h3 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(40px, 5vw, 72px);
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+    color: #fffaf3;
+  }
+  .svc-card p {
+    font-size: clamp(16px, 1.4vw, 22px);
+    line-height: 1.55;
+    color: rgba(255,250,243,0.88);
+    max-width: 580px;
+  }
+
+  /* Vertical dot rail — current card indicator on the right */
+  .cards-rail {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 6;
+    pointer-events: none;
+  }
+  .cards-rail .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(26,22,17,0.18);
+    transition: all 0.3s ease;
+  }
+  .cards-rail .dot.is-active {
+    background: var(--accent);
+    height: 28px;
+    border-radius: 5px;
+  }
+
+  /* === Section themes — break the orange monotony with WARM CREAM "interlude" sections === */
+  body.flash-done section.theme-cream {
+    background: #fff5dc;
+    color: #1a1611;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+  body.flash-done section.theme-cream .label { color: #ff5b1f; }
+  body.flash-done section.theme-cream .label::before { background: #ff5b1f; }
+  body.flash-done section.theme-cream h2,
+  body.flash-done section.theme-cream h2 .cn {
+    background: linear-gradient(180deg, #1a1611 0%, #4a2a14 60%, #ff5b1f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  body.flash-done section.theme-cream p.lead { color: rgba(26,22,17,0.72); }
+  body.flash-done section.theme-cream .feature {
+    background: rgba(255,91,31,0.04);
+    border-color: rgba(26,22,17,0.08);
+  }
+  body.flash-done section.theme-cream .feature:hover { background: rgba(255,91,31,0.14); }
+  body.flash-done section.theme-cream .feature .num { color: #ff5b1f; }
+  body.flash-done section.theme-cream .feature h3 { color: #1a1611; }
+  body.flash-done section.theme-cream .feature p { color: rgba(26,22,17,0.62); }
+  body.flash-done section.theme-cream .features {
+    background: rgba(26,22,17,0.06);
+    border-color: rgba(26,22,17,0.08);
+  }
+  body.flash-done section.theme-cream .stat { border-top-color: rgba(26,22,17,0.22); }
+  body.flash-done section.theme-cream .stat .num {
+    background: linear-gradient(180deg, #1a1611 0%, #ff5b1f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  body.flash-done section.theme-cream .stat .num .small {
+    background: none;
+    -webkit-text-fill-color: #ff5b1f;
+    color: #ff5b1f;
+  }
+  body.flash-done section.theme-cream .stat .lbl { color: rgba(26,22,17,0.55); }
+
+  /* === Title gradient on orange — cream → peach.
+     IMPORTANT: gradient must be applied to the INNER spans so it actually paints
+     (background-clip:text doesn't propagate from h1 to .row > span children). === */
+  body.flash-done .hero h1 .row > span {
+    background: linear-gradient(180deg, #ffffff 0%, #fff5dc 50%, #ffd9a3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  body.flash-done .hero h1 .row > span.accent {
+    /* italic DREAM. — slightly warmer */
+    background: linear-gradient(180deg, #ffe6b8 0%, #ffc685 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  body.flash-done h2 {
+    background: linear-gradient(180deg, #ffffff 0%, #fff5dc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* custom cursor — invert blend so it pops on any background */
+  .cursor {
+    position: fixed;
+    top: 0; left: 0;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+    transition: width .25s ease, height .25s ease, background .25s ease;
+  }
+  .cursor.big { width: 60px; height: 60px; }
+
+  /* mascot stage — fixed, ABOVE the orange prelude BG (z:1), BELOW main content (z:2 via main) */
+  .mascot-stage {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .mascot-wrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 720px;
+    height: 720px;       /* square — image is contain-fit inside, frame visible area auto-centers */
+    transform: translate(-50%, -50%);
+    will-change: transform;
+  }
+  .mascot {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;  /* hides any white background baked into the PNG */
+    will-change: transform;
+    display: none;             /* hidden — we use the canvas now */
+  }
+  .mascot-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+    /* PNG frames are now transparent — no blend mode needed */
+  }
+  /* lens light dot — sits where the camera lens is on the mascot image */
+  .lens-glow {
+    position: absolute;
+    left: 50%;
+    top: 38%;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff 0%, #ffd9a8 30%, rgba(255,170,80,0) 70%);
+    transform: translate(-50%,-50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+  .lens-ring {
+    position: absolute;
+    left: 50%;
+    top: 38%;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    transform: translate(-50%,-50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+  }
+  /* light ray cones from camera to viewer */
+  .rays {
+    position: absolute;
+    left: 50%;
+    top: 38%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+  }
+  .ray {
+    position: absolute;
+    left: 0; top: 0;
+    width: 1200px;
+    height: 80px;
+    transform-origin: 0 50%;
+    background: linear-gradient(to right, rgba(255,255,255,0.85), rgba(255,201,140,0.3) 30%, rgba(255,91,31,0) 80%);
+    border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+    margin-top: -40px;
+    mix-blend-mode: screen;
+  }
+
+  /* full-screen flash overlay */
+  .flash-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at var(--flash-x, 70%) var(--flash-y, 50%), #fff 0%, #fff 30%, rgba(255,255,255,0.9) 50%, rgba(255,255,255,0) 100%);
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0;
+    will-change: opacity;
+  }
+
+  /* mini particles burst */
+  .sparks {
+    position: absolute;
+    left: 50%;
+    top: 38%;
+    width: 8px; height: 8px;
+    pointer-events: none;
+  }
+  .spark {
+    position: absolute;
+    left: 0; top: 0;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translate(-50%,-50%);
+    opacity: 0;
+  }
+
+  /* nav */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    z-index: 100;
+    background: rgba(255,250,243,0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    color: var(--fg);
+  }
+  .nav .logo {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+  }
+  .nav .menu {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+  .nav .menu a { color: inherit; text-decoration: none; opacity: 0.85; }
+  .nav .menu a:hover { opacity: 1; }
+
+  /* progress bar */
+  .progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--accent);
+    z-index: 200;
+    transition: width 0.1s linear;
+  }
+
+  /* sections */
+  main { position: relative; z-index: 3; }
+
+  section {
+    min-height: 100vh;
+    padding: 120px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* hero */
+  .hero { min-height: 100vh; }
+  .hero .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(64px, 11vw, 200px);
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    max-width: 60%;
+  }
+  /* === HERO PRELUDE — huge orange single-line BG copy that scrolls right→left === */
+  .hero-prelude-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 1;             /* below mascot-stage (z:2) — bull will overlap this */
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    overflow: hidden;       /* clips the wide horizontal text */
+  }
+  .hero-prelude {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(96px, 14vw, 200px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--accent);   /* orange */
+    margin: 0;
+    white-space: nowrap;    /* single horizontal line */
+    text-transform: uppercase;
+    will-change: transform;
+  }
+  .hero h1 .row { display: block; overflow: hidden; }
+  .hero h1 .row span { display: inline-block; }
+  .hero h1 .accent { color: var(--accent); font-style: italic; }
+  .hero .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero .scroll-hint::before {
+    content: "";
+    width: 30px;
+    height: 1px;
+    background: var(--muted);
+  }
+
+  /* generic two-col */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .label {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .label::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  h2 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(48px, 7vw, 120px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+
+  h2 .cn {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 900;
+    display: block;
+    font-size: 0.5em;
+    color: var(--accent);
+    margin-top: 16px;
+    letter-spacing: 0;
+  }
+
+  p.lead {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(26,22,17,0.7);
+    max-width: 540px;
+  }
+
+  /* section 2 - manifesto content lives on the LEFT now (bull occupies the right) */
+  .manifesto .left { padding-right: 40px; }
+
+  /* section 3 - features grid */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-top: 80px;
+  }
+  .feature {
+    background: var(--bg);
+    padding: 60px 32px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.3s;
+  }
+  .feature:hover { background: var(--accent-soft); }
+  .feature .num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .feature h3 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+  }
+  .feature p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(26,22,17,0.6);
+  }
+
+  /* section 4 - orbits */
+  .orbit-section {
+    text-align: center;
+  }
+  .orbit-section h2 { font-size: clamp(56px, 9vw, 160px); }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 100px auto 0;
+  }
+  .stat {
+    text-align: left;
+    border-top: 1px solid rgba(26,22,17,0.18);
+    padding-top: 16px;
+  }
+  .stat .num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat .num .small { font-size: 0.5em; color: var(--accent); }
+  .stat .lbl {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* section 5 - cta */
+  .cta {
+    text-align: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .cta h2 { font-size: clamp(80px, 14vw, 240px); }
+  .cta .btn {
+    margin-top: 40px;
+    padding: 20px 56px;
+    border: 1px solid var(--fg);
+    background: transparent;
+    color: var(--fg);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: none;
+    border-radius: 999px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .cta .btn:hover { background: var(--fg); color: var(--bg); }
+
+  footer {
+    padding: 40px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    z-index: 2;
+    position: relative;
+  }
+
+  /* loader */
+  .loader {
+    position: fixed;
+    inset: 0;
+    background: var(--fg);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease;
+  }
+  .loader .num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 80px;
+    color: var(--bg);
+  }
+  .loader.done { opacity: 0; pointer-events: none; }
+
+  /* marquee */
+  .marquee {
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 24px 0;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+    background: var(--bg);
+  }
+  .marquee-track {
+    display: inline-flex;
+    gap: 60px;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    will-change: transform;
+    /* JS-driven via ScrollTrigger — no CSS animation */
+  }
+  .marquee-track span { display: inline-flex; align-items: center; gap: 60px; }
+  .marquee-track .dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+
+  /* nav cta */
+  .nav-cta {
+    padding: 10px 20px;
+    background: var(--fg);
+    color: var(--bg);
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: background 0.25s, color 0.25s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover { background: var(--accent); color: #fff; }
+
+  /* works gallery */
+  .works {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .work-card {
+    aspect-ratio: 4/5;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    cursor: none;
+    background: #2a241d;
+    color: #fffaf3;
+    text-decoration: none;
+    transition: transform 0.4s ease;
+    box-shadow: 0 12px 40px rgba(26,22,17,0.08);
+  }
+  .work-card:hover { transform: translateY(-6px); }
+  .work-thumb {
+    position: absolute; inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s ease, filter 0.4s;
+  }
+  .work-card:hover .work-thumb { transform: scale(1.06); filter: brightness(0.55); }
+  .work-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(26,22,17,0.88) 0%, rgba(26,22,17,0.0) 60%);
+    color: #fffaf3;
+  }
+  .work-tag {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .work-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+  }
+  .work-client {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  /* placeholder gradient thumbs (no images yet) */
+  .ph-1 { background: linear-gradient(135deg,#ff5b1f,#ff9d6c); }
+  .ph-2 { background: linear-gradient(135deg,#4f8aff,#7fd0ff); }
+  .ph-3 { background: linear-gradient(135deg,#1a1a1f 30%, #ff5b1f); }
+  .ph-4 { background: linear-gradient(135deg,#2c1d6b,#ff5b1f); }
+  .ph-5 { background: linear-gradient(135deg,#0a0a0c 0%, #ff5b1f 100%); }
+  .ph-6 { background: linear-gradient(135deg,#1f3a2c,#9bff7d); }
+
+  /* process timeline */
+  .process {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 80px;
+    counter-reset: step;
+    border-top: 1px solid rgba(26,22,17,0.14);
+  }
+  .step {
+    padding: 40px 28px;
+    border-right: 1px solid rgba(26,22,17,0.14);
+    position: relative;
+  }
+  .step:last-child { border-right: none; }
+  .step .dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-bottom: 24px;
+  }
+  .step .num {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+  }
+  .step h4 {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .step p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(26,22,17,0.6);
+  }
+
+  /* contact */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 60px;
+    text-align: left;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .contact-info .row {
+    border-top: 1px solid rgba(26,22,17,0.14);
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .contact-info .row:last-child { border-bottom: 1px solid rgba(26,22,17,0.14); }
+  .contact-info .lbl {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .contact-info .val {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+  }
+  .contact-info .val a { color: inherit; text-decoration: none; }
+  .contact-info .val a:hover { color: var(--accent); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(26,22,17,0.22);
+    padding: 14px 0;
+    color: var(--fg);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    outline: none;
+    cursor: none;
+  }
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus { border-bottom-color: var(--accent); }
+  .contact-form textarea { resize: none; min-height: 80px; }
+  .contact-form select { color: var(--fg); }
+  .contact-form select option { background: var(--bg); color: var(--fg); }
+  .contact-form button {
+    margin-top: 16px;
+    padding: 18px 0;
+    border: 1px solid var(--fg);
+    background: transparent;
+    color: var(--fg);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: none;
+    border-radius: 999px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .contact-form button:hover { background: var(--fg); color: var(--bg); }
+
+  /* whatsapp floating */
+  .wa-fab {
+    position: fixed;
+    right: 24px; bottom: 24px;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: #25d366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 150;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+    transition: transform 0.25s;
+  }
+  .wa-fab:hover { transform: scale(1.1); }
+  .wa-fab svg { width: 28px; height: 28px; fill: #fff; }
+
+  /* logo strip */
+  .logo-strip {
+    margin-top: 60px;
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.6;
+  }
+  .logo-strip .brand {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 22px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 768px) {
+    body { cursor: auto; }
+    .cursor { display: none; }
+    .nav { padding: 20px; }
+    .nav .menu { display: none; }
+    section { padding: 100px 24px; }
+    .split { grid-template-columns: 1fr; gap: 40px; }
+    .manifesto .left { padding-right: 0; }
+    .features { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .works { grid-template-columns: 1fr; }
+    .process { grid-template-columns: 1fr; }
+    .step { border-right: none; border-bottom: 1px solid rgba(26,22,17,0.14); }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .work-card, .work-card * , .contact-form * { cursor: auto; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="loader" id="loader"><div class="num" id="loaderNum">0</div></div>
+<div class="cursor" id="cursor"></div>
+<div class="progress" id="progress"></div>
+
+<nav class="nav">
+  <div class="logo">GYD<span style="color:var(--accent)">°</span></div>
+  <ul class="menu">
+    <li><a href="#about">关于</a></li>
+    <li><a href="#services">服务</a></li>
+    <li><a href="#works">作品</a></li>
+    <li><a href="#process">流程</a></li>
+    <li><a href="#contact">联系</a></li>
+  </ul>
+  <a class="nav-cta" href="https://wa.me/60123456789" target="_blank" rel="noopener">WhatsApp 询单</a>
+</nav>
+
+<div class="flash-overlay" id="flash"></div>
+
+<!-- Big orange BG copy — single horizontal line that scrolls right -> left BEHIND the mascot -->
+<div class="hero-prelude-bg" id="heroPreludeBg" aria-hidden="true">
+  <p class="hero-prelude" id="heroPrelude">GYD&nbsp;MARKETING&nbsp;&nbsp;·&nbsp;&nbsp;GROW&nbsp;YOUR&nbsp;DREAM&nbsp;&nbsp;·&nbsp;&nbsp;</p>
+</div>
+
+<div class="mascot-stage" id="mascotStage">
+  <div class="mascot-wrap" id="mascotWrap">
+    <img class="mascot" id="mascot" src="mascot.png" alt="GYD Mascot" />
+    <canvas class="mascot-canvas" id="mascotCanvas" width="1280" height="1280"></canvas>
+    <div class="rays" id="rays">
+      <div class="ray" style="transform: rotate(-25deg);"></div>
+      <div class="ray" style="transform: rotate(-12deg);"></div>
+      <div class="ray" style="transform: rotate(0deg);"></div>
+      <div class="ray" style="transform: rotate(12deg);"></div>
+      <div class="ray" style="transform: rotate(25deg);"></div>
+    </div>
+    <div class="lens-glow" id="lensGlow"></div>
+    <div class="lens-ring" id="lensRing"></div>
+    <div class="sparks" id="sparks"></div>
+  </div>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="eyebrow">GYD MARKETING · 管一点营销 · Johor Bahru, MY</div>
+    <h1>
+      <span class="row"><span>GROW</span></span>
+      <span class="row"><span>YOUR</span></span>
+      <span class="row"><span class="accent">DREAM.</span></span>
+    </h1>
+    <div class="scroll-hint">替品牌长出销量 · SCROLL</div>
+  </section>
+
+  <!-- MANIFESTO — text moved to LEFT column so the bull (right side) stays consistent -->
+  <section class="manifesto" id="about">
+    <div class="split">
+      <div class="left">
+        <div class="label">01 — 关于我们</div>
+        <h2>
+          We grow<br>
+          your brand,<br>
+          online.
+          <span class="cn">让品牌在网上长大。</span>
+        </h2>
+        <p class="lead">
+          GYD Marketing 管一点营销 是一家立足新山的数字营销公司。
+          我们替中小品牌做社交媒体广告、Google 广告、网站、品牌视觉与视频内容 ——
+          不堆术语，只看数据：曝光涨没涨、私讯有没有、转化跑不跑得起来。
+        </p>
+
+        <div class="logo-strip">
+          <span class="brand">CLIENT A</span>
+          <span class="brand">BRAND B</span>
+          <span class="brand">F&B C</span>
+          <span class="brand">RETAIL D</span>
+          <span class="brand">EDU E</span>
+          <span class="brand">SAAS F</span>
+        </div>
+      </div>
+      <div class="right"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE — scroll-driven, slides right -> left as user scrolls -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>SOCIAL ADS <span class="dot"></span> GOOGLE ADS <span class="dot"></span> WEB DESIGN <span class="dot"></span> BRANDING <span class="dot"></span> VIDEO PRODUCTION <span class="dot"></span> SEO <span class="dot"></span> CONTENT <span class="dot"></span> CREATIVE <span class="dot"></span></span>
+    </div>
+  </div>
+
+  <!-- SERVICES — cream interlude (warm chapter break) -->
+  <section id="services" class="theme-cream">
+    <div class="split">
+      <div class="left">
+        <div class="label">02 — 我们能做</div>
+        <h2>
+          Six ways<br>
+          to grow.
+          <span class="cn">六条增长曲线。</span>
+        </h2>
+      </div>
+      <div class="right">
+        <p class="lead">
+          一站式数字营销 —— 从内容到投放、从品牌到落地页，
+          我们替你打通看见、记住、买单的完整链路。
+        </p>
+      </div>
+    </div>
+
+    <!-- Full-screen card stack — 6 service cards, each rises from below into front, then flips up & away -->
+    <div class="cards-stage" id="cardsStage">
+      <div class="cards-deck" id="cardsDeck">
+        <div class="svc-card">
+          <div class="num-big">01</div>
+          <div class="text">
+            <h3>Social Ads</h3>
+            <p>Facebook / Instagram / TikTok 广告投放与素材创意，主打高 CTR 短视频与转化型图文。</p>
+          </div>
+        </div>
+        <div class="svc-card">
+          <div class="num-big">02</div>
+          <div class="text">
+            <h3>Google Ads &amp; SEO</h3>
+            <p>搜索广告、再营销、本地 SEO，让你在关键词里赢过对手，长期免费流量持续累积。</p>
+          </div>
+        </div>
+        <div class="svc-card">
+          <div class="num-big">03</div>
+          <div class="text">
+            <h3>Web Design</h3>
+            <p>响应式企业站、电商站、落地页 —— 干净的视觉、扎实的转化、可后台自维护。</p>
+          </div>
+        </div>
+        <div class="svc-card">
+          <div class="num-big">04</div>
+          <div class="text">
+            <h3>Graphic Design</h3>
+            <p>海报、社媒贴、菜单、传单、户外广告 —— 让你的品牌在每一个曝光点都好看。</p>
+          </div>
+        </div>
+        <div class="svc-card">
+          <div class="num-big">05</div>
+          <div class="text">
+            <h3>Video Production</h3>
+            <p>短视频脚本、拍摄、剪辑、字幕、配乐 —— 适配 Reels / TikTok / 信息流广告。</p>
+          </div>
+        </div>
+        <div class="svc-card">
+          <div class="num-big">06</div>
+          <div class="text">
+            <h3>Branding</h3>
+            <p>Logo、VI、品牌定位、Slogan —— 替你定义"为什么客户应该选你而不是别人"。</p>
+          </div>
+        </div>
+      </div>
+      <div class="cards-rail" id="cardsRail">
+        <span class="dot is-active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section id="works">
+    <div class="split">
+      <div class="left">
+        <div class="label">03 — 作品集</div>
+        <h2>
+          Selected<br>works.
+          <span class="cn">部分案例。</span>
+        </h2>
+      </div>
+      <div class="right">
+        <p class="lead">
+          F&B、零售、教育、SaaS、医美 —— 我们在新山和大马各地服务过的真实增长项目。
+          点开任意一张可看完整复盘。
+        </p>
+      </div>
+    </div>
+
+    <div class="works">
+      <a class="work-card" href="#contact"><div class="work-thumb ph-1"></div>
+        <div class="work-overlay"><div class="work-tag">Social Ads · F&B</div><div class="work-title">Lavender Café</div><div class="work-client">3× ROAS · 60 天</div></div></a>
+      <a class="work-card" href="#contact"><div class="work-thumb ph-2"></div>
+        <div class="work-overlay"><div class="work-tag">Web · Retail</div><div class="work-title">Urban Threads</div><div class="work-client">官网 + 电商</div></div></a>
+      <a class="work-card" href="#contact"><div class="work-thumb ph-3"></div>
+        <div class="work-overlay"><div class="work-tag">Branding</div><div class="work-title">North Star Edu</div><div class="work-client">VI 体系重塑</div></div></a>
+      <a class="work-card" href="#contact"><div class="work-thumb ph-4"></div>
+        <div class="work-overlay"><div class="work-tag">Video</div><div class="work-title">JB Skyline</div><div class="work-client">短视频 12 支</div></div></a>
+      <a class="work-card" href="#contact"><div class="work-thumb ph-5"></div>
+        <div class="work-overlay"><div class="work-tag">Google Ads · SaaS</div><div class="work-title">CloudFlow</div><div class="work-client">CPL 降 47%</div></div></a>
+      <a class="work-card" href="#contact"><div class="work-thumb ph-6"></div>
+        <div class="work-overlay"><div class="work-tag">Graphic</div><div class="work-title">Greenleaf</div><div class="work-client">包装 + 海报</div></div></a>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="split">
+      <div class="left">
+        <div class="label">04 — 合作流程</div>
+        <h2>
+          From brief<br>to growth.
+          <span class="cn">从询单到增长。</span>
+        </h2>
+      </div>
+      <div class="right">
+        <p class="lead">
+          没有黑盒。每个项目都按这四步走，
+          每一步你都看得到产出、对得齐预期、改得了方向。
+        </p>
+      </div>
+    </div>
+
+    <div class="process">
+      <div class="step">
+        <div class="dot"></div>
+        <div class="num">STEP 01</div>
+        <h4>Brief<br>询单</h4>
+        <p>免费 30 分钟咨询，了解品牌现状、目标人群、预算、上线时间。</p>
+      </div>
+      <div class="step">
+        <div class="dot"></div>
+        <div class="num">STEP 02</div>
+        <h4>Strategy<br>策略</h4>
+        <p>渠道组合、内容方向、KPI、报价单 —— 一份提案让你看清整盘账。</p>
+      </div>
+      <div class="step">
+        <div class="dot"></div>
+        <div class="num">STEP 03</div>
+        <h4>Execute<br>执行</h4>
+        <p>素材、投放、网站、视频按周交付，群里同步进度，随时拉通会议。</p>
+      </div>
+      <div class="step">
+        <div class="dot"></div>
+        <div class="num">STEP 04</div>
+        <h4>Review<br>复盘</h4>
+        <p>每月数据报告 + 优化建议，跑得好的放大，跑不动的果断换。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORBIT / STATS — cream interlude -->
+  <section class="orbit-section theme-cream" id="orbit">
+    <div class="label" style="justify-content:center">05 — 战绩</div>
+    <h2>
+      Numbers<br>that grew.
+      <span class="cn">长出来的数字。</span>
+    </h2>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="num">100<span class="small">+</span></div>
+        <div class="lbl">合作品牌</div>
+      </div>
+      <div class="stat">
+        <div class="num">500<span class="small">+</span></div>
+        <div class="lbl">完成项目</div>
+      </div>
+      <div class="stat">
+        <div class="num">98<span class="small">%</span></div>
+        <div class="lbl">客户满意</div>
+      </div>
+      <div class="stat">
+        <div class="num">5<span class="small">年</span></div>
+        <div class="lbl">行业经验</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="cta" id="contact">
+    <div class="label">06 — 出发吧</div>
+    <h2>
+      LET'S<br>
+      <span style="color:var(--accent)">GROW.</span>
+      <span class="cn">谈一下你的项目。</span>
+    </h2>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="row">
+          <div class="lbl">WhatsApp</div>
+          <div class="val"><a href="https://wa.me/60123456789" target="_blank" rel="noopener">+60 12-345 6789</a></div>
+        </div>
+        <div class="row">
+          <div class="lbl">Email</div>
+          <div class="val"><a href="mailto:hello@gydmarketing.my">hello@gydmarketing.my</a></div>
+        </div>
+        <div class="row">
+          <div class="lbl">Facebook</div>
+          <div class="val"><a href="https://www.facebook.com/gydmarketing.my/" target="_blank" rel="noopener">@gydmarketing.my</a></div>
+        </div>
+        <div class="row">
+          <div class="lbl">Address</div>
+          <div class="val">Johor Bahru, Malaysia</div>
+        </div>
+        <div class="row">
+          <div class="lbl">Hours</div>
+          <div class="val">周一至周六 · 9:30 — 18:30</div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm">
+        <input type="text" name="name" placeholder="你的名字 / Your name" required>
+        <input type="text" name="phone" placeholder="WhatsApp / 手机 / Phone" required>
+        <input type="email" name="email" placeholder="邮箱 / Email">
+        <select name="service" required>
+          <option value="">想聊的服务 / Service interest…</option>
+          <option>Social Ads · 社交广告</option>
+          <option>Google Ads & SEO · 搜索广告</option>
+          <option>Web Design · 网站设计</option>
+          <option>Graphic Design · 平面设计</option>
+          <option>Video Production · 视频制作</option>
+          <option>Branding · 品牌策划</option>
+          <option>其他 / Other</option>
+        </select>
+        <textarea name="msg" placeholder="说说项目背景、目标、预算 / Tell us about your project"></textarea>
+        <button type="submit">SEND BRIEF</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2026 GYD Marketing · 管一点营销</div>
+    <div>Johor Bahru, Malaysia · made with three.js</div>
+  </footer>
+
+</main>
+
+<a class="wa-fab" href="https://wa.me/60123456789" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ----------  Smooth scroll (Lenis -> ScrollTrigger). Optional. ---------- */
+try {
+  if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({ lerp: 0.08, smoothWheel: true });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+  } else {
+    console.warn('Lenis unavailable — falling back to native scroll.');
+  }
+} catch (e) {
+  console.warn('Lenis init failed, using native scroll:', e);
+}
+
+/* ----------  Custom cursor ---------- */
+const cursor = document.getElementById('cursor');
+window.addEventListener('mousemove', (e) => {
+  gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.25, ease: 'power2.out' });
+});
+document.querySelectorAll('a, button').forEach((el) => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('big'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('big'));
+});
+
+/* ----------  Mascot scroll-driven choreography ----------
+   The mascot (PNG) is positioned via translate (px) + scale + rotation.
+   posX/posY are in viewport-percent units so it adapts to viewport size.
+*/
+const mascotWrap = document.getElementById('mascotWrap');
+const mascot = document.getElementById('mascot');
+
+const mascotState = {
+  posX: 0,    // % of viewport width offset from center
+  posY: 0,    // % of viewport height offset from center
+  scale: 1.0,
+  rot: 0,     // degrees
+  flipX: 1,   // -1 to mirror horizontally (face other way)
+  alpha: 1,
+};
+
+function applyMascot(extraOffsetX = 0, extraOffsetY = 0, extraRot = 0) {
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const tx = mascotState.posX * vw / 100 + extraOffsetX;
+  const ty = mascotState.posY * vh / 100 + extraOffsetY;
+  mascotWrap.style.transform =
+    `translate(-50%,-50%) translate(${tx}px, ${ty}px) scale(${mascotState.scale * mascotState.flipX}, ${mascotState.scale}) rotate(${mascotState.rot + extraRot}deg)`;
+  mascotWrap.style.opacity = mascotState.alpha;
+}
+
+// Ambient state must exist before timeline (its onUpdate references these)
+let mouseX = 0, mouseY = 0;
+let ambientX = 0, ambientY = 0, ambientR = 0;
+
+/* ---------- DOM refs and initial states (must precede the timelines) ---------- */
+const flashEl = document.getElementById('flash');
+const lensGlow = document.getElementById('lensGlow');
+const lensRing = document.getElementById('lensRing');
+const raysEl = document.getElementById('rays');
+const sparksEl = document.getElementById('sparks');
+const heroH1 = document.querySelector('.hero h1');
+const heroEyebrow = document.querySelector('.hero .eyebrow');
+const heroHint = document.querySelector('.hero .scroll-hint');
+const mascotCanvas = document.getElementById('mascotCanvas');
+const mascotCtx = mascotCanvas.getContext('2d');
+
+/* ---------- Frame sequence (Apple-style scroll-driven image flipbook) ---------- */
+const FRAME_COUNT = 55;        // cow_00.png .. cow_54.png
+const FRAME_START = 0;         // skip first N frames if too long (set 10 to start at cow_10)
+const usedFrames = FRAME_COUNT - FRAME_START;
+const frames = new Array(FRAME_COUNT);
+let framesLoaded = 0;
+let currentFrameIndex = FRAME_START;
+
+function drawFrame(idx) {
+  const img = frames[idx];
+  if (!img || !img.complete) return;
+  const c = mascotCanvas;
+  const ctx = mascotCtx;
+  ctx.clearRect(0, 0, c.width, c.height);
+  // draw image centered, contain-fit
+  const ar = img.naturalWidth / img.naturalHeight;
+  const cAr = c.width / c.height;
+  let dw, dh;
+  if (ar > cAr) { dw = c.width; dh = dw / ar; }
+  else { dh = c.height; dw = dh * ar; }
+  const dx = (c.width - dw) / 2;
+  const dy = (c.height - dh) / 2;
+  ctx.drawImage(img, dx, dy, dw, dh);
+  currentFrameIndex = idx;
+}
+
+// scroll progress (0..1) -> which frame to show
+function frameForProgress(p) {
+  const idx = FRAME_START + Math.round(p * (usedFrames - 1));
+  return Math.max(FRAME_START, Math.min(FRAME_COUNT - 1, idx));
+}
+
+// Preload — fire all in parallel, update loader as they arrive
+for (let i = FRAME_START; i < FRAME_COUNT; i++) {
+  const img = new Image();
+  img.src = `Cow_transparent/cow_${String(i).padStart(2, '0')}.png`;
+  img.onload = () => {
+    framesLoaded++;
+    if (i === FRAME_START) drawFrame(FRAME_START);  // show first frame ASAP
+  };
+  img.onerror = () => { framesLoaded++; console.warn('Failed to load frame', i); };
+  frames[i] = img;
+}
+
+// Hide hero text initially — flash will reveal it as user scrolls
+gsap.set([heroH1, heroEyebrow, heroHint], { autoAlpha: 0 });
+gsap.set('.hero h1 .row span', { y: '110%' });
+gsap.set([lensRing, lensGlow, raysEl], { autoAlpha: 0 });
+// Position the horizontal prelude text just off the right edge of the viewport
+const heroPreludeEl = document.getElementById('heroPrelude');
+gsap.set(heroPreludeEl, { x: () => window.innerWidth });
+// Make sure the orange theme is OFF on load (no stale class from a prior session)
+document.body.classList.remove('flash-done');
+
+// Mascot wrap stays centered for the hero — the FRAME ANIMATION provides the movement
+mascotState.posX = 0;
+mascotState.posY = 0;
+mascotState.scale = 1.0;
+mascotState.rot = 0;
+applyMascot();
+
+// Build the spark elements once
+const SPARK_COUNT = 18;
+const sparks = [];
+for (let i = 0; i < SPARK_COUNT; i++) {
+  const s = document.createElement('div');
+  s.className = 'spark';
+  if (i % 3 === 0) s.style.background = '#fff';
+  if (i % 3 === 1) s.style.background = '#ffd9a8';
+  sparksEl.appendChild(s);
+  sparks.push(s);
+}
+let sparksFired = false;
+function fireSparks() {
+  sparks.forEach((s, i) => {
+    const ang = (i / SPARK_COUNT) * Math.PI * 2 + (Math.random() - 0.5) * 0.4;
+    const dist = 220 + Math.random() * 180;
+    gsap.fromTo(s,
+      { x: 0, y: 0, opacity: 0, scale: 0.4 },
+      {
+        x: Math.cos(ang) * dist,
+        y: Math.sin(ang) * dist,
+        opacity: 1,
+        scale: 1.6 + Math.random() * 1.2,
+        duration: 0.7 + Math.random() * 0.4,
+        ease: 'power2.out',
+      }
+    );
+    gsap.to(s, { opacity: 0, duration: 0.6, delay: 0.4 + Math.random() * 0.3, ease: 'power2.in' });
+  });
+}
+function resetSparks() {
+  sparks.forEach((s) => { gsap.set(s, { x: 0, y: 0, opacity: 0, scale: 0.4 }); });
+}
+
+/* ----------  Phase 1: Hero PINNED — flash sequence is SCROLL-DRIVEN ----------
+   User scrolls the hero, scroll progress 0→1 scrubs the entire intro:
+   bull enters → lens charges → FLASH → title reveals → settles.
+*/
+const introTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '#hero',
+    start: 'top top',
+    end: '+=180%',         // longer pinned scroll — gives 55 frames room to breathe
+    pin: true,
+    pinSpacing: true,
+    scrub: 1,
+    onUpdate: (self) => {
+      applyMascot(ambientX, ambientY, ambientR);
+      // drive the frame flipbook (0 → 1 of intro maps to frame 0 → 54)
+      drawFrame(frameForProgress(self.progress));
+      // sparks trigger once when bull hits the SHUTTER pose
+      if (self.progress > 0.85 && !sparksFired) { fireSparks(); sparksFired = true; }
+      if (self.progress < 0.8 && sparksFired) { sparksFired = false; resetSparks(); }
+      // ORANGE theme flips on at flash peak, off if user scrolls back up
+      if (self.progress >= 0.88) {
+        if (!document.body.classList.contains('flash-done')) document.body.classList.add('flash-done');
+      } else if (self.progress < 0.85) {
+        if (document.body.classList.contains('flash-done')) document.body.classList.remove('flash-done');
+      }
+    },
+  }
+});
+
+introTl
+  // 0 → 0.85 : BULL DRIFTS RIGHT as it raises the camera, leaving room on the LEFT for copy
+  .to(mascotState, { posX: 30, duration: 0.85, ease: 'power1.inOut' }, 0)
+
+  // 0.05 → 0.15 : eyebrow fades in
+  .to(heroEyebrow, { autoAlpha: 1, duration: 0.1 }, 0.05)
+
+  // 0 → 0.85 : prelude text sweeps from off-RIGHT all the way off-LEFT (counter to bull's right drift)
+  .fromTo(heroPreludeEl,
+    { x: () => window.innerWidth },
+    { x: () => -heroPreludeEl.scrollWidth, duration: 0.85, ease: 'none' }, 0)
+
+  // 0.65 → 0.82 : camera lens charges (orange ring + warm glow)
+  .to(lensRing, { autoAlpha: 1, scale: 3.2, rotate: 180, duration: 0.17, ease: 'power2.out' }, 0.65)
+  .to(lensGlow, { autoAlpha: 1, scale: 1, duration: 0.14, ease: 'power2.out' }, 0.72)
+
+  // 0.78 → 0.86 : prelude copy fades out — the FLASH is going to replace it with the title
+  .to('.hero-prelude', { autoAlpha: 0, duration: 0.08, ease: 'power2.out' }, 0.78)
+
+  // 0.85 → 0.92 : SHUTTER PRESSED — FLASH bursts, light rays explode
+  .to(flashEl, { opacity: 1, duration: 0.03, ease: 'power2.in' }, 0.85)
+  .to(flashEl, { opacity: 0, duration: 0.13, ease: 'power2.out' }, 0.88)
+  .fromTo(raysEl, { opacity: 0, scale: 0.2 }, { opacity: 1, scale: 1.2, duration: 0.05 }, 0.85)
+  .to(raysEl, { opacity: 0, scale: 1.8, duration: 0.13, ease: 'power2.out' }, 0.9)
+
+  // 0.86 → 1.0 : title reveals on the LEFT during the afterglow
+  .to(heroH1, { autoAlpha: 1, duration: 0.04 }, 0.86)
+  .to('.hero h1 .row span', { y: '0%', stagger: 0.03, duration: 0.14, ease: 'power3.out' }, 0.87)
+
+  // 0.92 → 1.0 : ring fades, glow lingers
+  .to(lensRing, { autoAlpha: 0, scale: 0, duration: 0.08 }, 0.92)
+  .to(lensGlow, { scale: 0.5, duration: 0.08 }, 0.92)
+
+  // 0.95 → 1.0 : scroll hint appears
+  .to(heroHint, { autoAlpha: 1, duration: 0.05 }, 0.95);
+
+/* ----------  Phase 2: REST OF PAGE — section choreography ---------- */
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: '#about',
+    start: 'top bottom',     // begins when manifesto enters viewport (after hero unpin)
+    endTrigger: '#contact',  // span all sections from about through contact
+    end: 'bottom bottom',
+    scrub: 1.2,
+    invalidateOnRefresh: true,
+    onUpdate: (self) => {
+      applyMascot(ambientX, ambientY, ambientR);
+      // Only swap to cow_01 once the intro pin is complete
+      if (introTl && introTl.scrollTrigger && introTl.scrollTrigger.progress >= 1) {
+        drawFrame(1);
+      }
+    },
+  }
+});
+
+// All post-flash positions: small bull tucked into the EMPTY corners of each layout
+// (split sections have one column of text, opposite column is empty — bull goes there).
+
+// Bull stays on the RIGHT through the whole post-intro stretch — no return to center.
+// Only ONE side-flip happens, at contact (where the form is on the right).
+
+// 0 -> 1 : manifesto. Text now on LEFT (column flipped) — bull stays RIGHT, bigger.
+tl.to(mascotState, { posX: 30, posY: 0, scale: 0.55, rot: -2, duration: 1, ease: 'power2.inOut' }, 0);
+
+// 1 -> 2 : services. h2 on LEFT — bull stays RIGHT.
+tl.to(mascotState, { posX: 32, posY: -6, scale: 0.42, rot: 2, duration: 1, ease: 'power2.inOut' }, 1);
+
+// 2 -> 3 : works. h2 on LEFT — bull stays RIGHT, slight drift only.
+tl.to(mascotState, { posX: 32, posY: 16, scale: 0.36, rot: -1, duration: 1, ease: 'power2.inOut' }, 2);
+
+// 3 -> 4 : process/stats. h2 on LEFT — bull stays RIGHT.
+tl.to(mascotState, { posX: 30, posY: -8, scale: 0.38, rot: 1, duration: 1, ease: 'power2.inOut' }, 3);
+
+// 4 -> 5 : contact. Form on RIGHT, info on LEFT — bull moves LEFT, BIG, between Hours-row & footer.
+tl.to(mascotState, { posX: -22, posY: 8, scale: 0.55, rot: -4, duration: 1, ease: 'power2.inOut' }, 4);
+
+/* ----------  Section text reveals (h1 row spans are handled by introTl) ---------- */
+gsap.utils.toArray('h2').forEach((h2) => {
+  gsap.from(h2, {
+    y: 60, opacity: 0, duration: 1, ease: 'power3.out',
+    scrollTrigger: { trigger: h2, start: 'top 85%' }
+  });
+});
+
+gsap.utils.toArray('.feature').forEach((f, i) => {
+  gsap.from(f, {
+    y: 60, opacity: 0, duration: 0.8, delay: i * 0.05, ease: 'power2.out',
+    scrollTrigger: { trigger: f, start: 'top 90%' }
+  });
+});
+
+gsap.utils.toArray('.work-card').forEach((w, i) => {
+  gsap.from(w, {
+    y: 80, opacity: 0, duration: 0.9, delay: (i % 3) * 0.08, ease: 'power3.out',
+    scrollTrigger: { trigger: w, start: 'top 90%' }
+  });
+});
+
+/* ----------  FULL-SCREEN CARD STACK — pin services, scroll drives card transitions ---------- */
+const svcCards = document.querySelectorAll('.svc-card');
+const cardsRailDots = document.querySelectorAll('#cardsRail .dot');
+
+if (svcCards.length) {
+  // Apply per-card transform based on its "phase" relative to the active card
+  function applyCards(activeFloat) {
+    svcCards.forEach((card, i) => {
+      const phase = i - activeFloat;   // <0 = past (flipped UP), 0 = active, >0 = waiting BELOW
+      let ty, rx, op, tz, zi;
+
+      if (phase <= -1.05) {
+        // fully past — hidden up there
+        ty = -120; rx = -85; op = 0; tz = -120; zi = 1;
+      } else if (phase < 0) {
+        // transitioning OUT to the top
+        const t = -phase;                 // 0 → 1.05
+        ty = -t * 110;                    // 0 → -115vh
+        rx = -t * 75;                     // 0 → -78deg (top tilts toward viewer as it flies up)
+        op = 1 - t * 1.05;                // 1 → ~0
+        tz = -t * 120;
+        zi = 50 - Math.round(t * 30);
+      } else if (phase < 1) {
+        // transitioning IN from below toward active
+        const t = phase;                  // 0 → 1
+        ty = t * 30;                      // 0 → 30vh
+        rx = t * 32;                      // 0 → 32deg (top edge tilts back, away)
+        op = 1 - t * 0.25;                // 1 → 0.75 (slight fade as it approaches active state)
+        tz = -t * 60;
+        zi = 100 - Math.round(t * 5);
+      } else {
+        // waiting below in the stack (phase 1, 2, 3...)
+        const t = Math.min(2.5, phase);
+        ty = 30 + (t - 1) * 8;            // 30vh → 42vh
+        rx = 32 + (t - 1) * 6;            // small extra tilt
+        op = Math.max(0, 0.75 - (t - 1) * 0.5);  // 0.75 → 0
+        tz = -60 - (t - 1) * 40;
+        zi = 90 - Math.round(t * 5);
+      }
+
+      card.style.transform = `translate(-50%, -50%) translateY(${ty}vh) translateZ(${tz}px) rotateX(${rx}deg)`;
+      card.style.opacity = op;
+      card.style.zIndex = zi;
+    });
+  }
+
+  // Initial state — card 0 active, others stacked below
+  applyCards(0);
+
+  ScrollTrigger.create({
+    trigger: '.cards-stage',           // pin only the cards block, NOT the whole section — title shows first
+    start: 'top top',
+    end: '+=350%',                     // pin for ~3.5 viewport heights — 6 cards transition
+    pin: true,
+    pinSpacing: true,
+    scrub: 0.5,
+    invalidateOnRefresh: true,
+    onUpdate: (self) => {
+      const activeFloat = self.progress * (svcCards.length - 1);
+      applyCards(activeFloat);
+      const activeIdx = Math.min(svcCards.length - 1, Math.round(activeFloat));
+      cardsRailDots.forEach((d, i) => d.classList.toggle('is-active', i === activeIdx));
+    }
+  });
+}
+
+/* ----------  Marquee — scroll-driven, right -> left, fully exits on the left ---------- */
+const marqueeTrack = document.querySelector('.marquee-track');
+gsap.fromTo(marqueeTrack,
+  { x: () => window.innerWidth },                  // start: just off the right edge
+  {
+    x: () => -marqueeTrack.scrollWidth,            // end: just off the left edge
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.marquee',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 0.8,
+      invalidateOnRefresh: true,                   // recompute widths on resize
+    }
+  }
+);
+
+gsap.utils.toArray('.step').forEach((s, i) => {
+  gsap.from(s, {
+    y: 40, opacity: 0, duration: 0.7, delay: i * 0.1, ease: 'power2.out',
+    scrollTrigger: { trigger: s, start: 'top 90%' }
+  });
+});
+
+gsap.from('.contact-info .row', {
+  x: -40, opacity: 0, duration: 0.7, stagger: 0.08, ease: 'power2.out',
+  scrollTrigger: { trigger: '.contact-info', start: 'top 80%' }
+});
+gsap.from('.contact-form > *', {
+  y: 30, opacity: 0, duration: 0.6, stagger: 0.06, ease: 'power2.out',
+  scrollTrigger: { trigger: '.contact-form', start: 'top 80%' }
+});
+
+/* ----------  Contact form -> WhatsApp ---------- */
+const WA_NUMBER = '60123456789'; // TODO: replace with real number
+const form = document.getElementById('contactForm');
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = new FormData(form);
+    const text =
+      `你好 GYD Marketing！\n\n` +
+      `名字 / Name: ${f.get('name') || ''}\n` +
+      `电话 / Phone: ${f.get('phone') || ''}\n` +
+      `邮箱 / Email: ${f.get('email') || ''}\n` +
+      `想聊 / Service: ${f.get('service') || ''}\n` +
+      `项目 / Project:\n${f.get('msg') || ''}`;
+    const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank', 'noopener');
+  });
+}
+
+gsap.utils.toArray('.stat').forEach((s, i) => {
+  gsap.from(s, {
+    y: 40, opacity: 0, duration: 0.8, delay: i * 0.08, ease: 'power2.out',
+    scrollTrigger: { trigger: s, start: 'top 90%' }
+  });
+});
+
+/* ----------  Progress bar ---------- */
+const progressEl = document.getElementById('progress');
+ScrollTrigger.create({
+  trigger: 'main',
+  start: 'top top',
+  end: 'bottom bottom',
+  onUpdate: (self) => {
+    progressEl.style.width = (self.progress * 100) + '%';
+  }
+});
+
+/* ----------  Ambient float + mouse parallax ---------- */
+window.addEventListener('mousemove', (e) => {
+  mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+  mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+});
+
+const start = performance.now();
+function animateAmbient() {
+  const t = (performance.now() - start) / 1000;
+  // very gentle float — barely-there drift
+  ambientY = Math.sin(t * 0.35) * 1.8;
+  ambientX = Math.cos(t * 0.28) * 1.2;
+  ambientR = Math.sin(t * 0.3) * 0.3;
+  // mouse parallax — small
+  ambientX += mouseX * 5;
+  ambientY += mouseY * 3.5;
+  applyMascot(ambientX, ambientY, ambientR);
+  requestAnimationFrame(animateAmbient);
+}
+applyMascot();
+animateAmbient();
+
+window.addEventListener('resize', () => applyMascot(ambientX, ambientY, ambientR));
+
+/* ----------  Loader — driven by real frame preload progress ---------- */
+const loader = document.getElementById('loader');
+const loaderNum = document.getElementById('loaderNum');
+
+function dismissLoader() {
+  if (!loader || !loader.parentNode) return;
+  loader.classList.add('done');
+  setTimeout(() => loader.remove(), 700);
+}
+
+(function watchPreload() {
+  const total = usedFrames;
+  function tick() {
+    const pct = Math.min(100, Math.round((framesLoaded / total) * 100));
+    loaderNum.textContent = pct;
+    if (framesLoaded >= total) {
+      // ensure first frame is drawn before dismissing
+      drawFrame(FRAME_START);
+      ScrollTrigger.refresh();
+      setTimeout(dismissLoader, 250);
+    } else {
+      requestAnimationFrame(tick);
+    }
+  }
+  tick();
+})();
+// safety net — never let the loader trap the page
+setTimeout(() => { dismissLoader(); ScrollTrigger.refresh(); }, 12000);
+
+function triggerFlash() {
+  // position the flash radial center at the camera lens
+  const rect = mascotWrap.getBoundingClientRect();
+  const cx = rect.left + rect.width * 0.28;
+  const cy = rect.top + rect.height * 0.38;
+  flashEl.style.setProperty('--flash-x', cx + 'px');
+  flashEl.style.setProperty('--flash-y', cy + 'px');
+  // bright flash
+  gsap.timeline()
+    .to(flashEl, { opacity: 1, duration: 0.06, ease: 'power2.in' })
+    .to(flashEl, { opacity: 0.85, duration: 0.06 })
+    .to(flashEl, { opacity: 1, duration: 0.05 })
+    .to(flashEl, { opacity: 0, duration: 0.6, ease: 'power2.out' });
+}
+
+// Click on mascot triggers another flash for fun
+mascotWrap.style.pointerEvents = 'auto';
+mascotWrap.style.cursor = 'pointer';
+mascotWrap.addEventListener('click', () => {
+  triggerFlash();
+  // mini ray burst
+  gsap.fromTo(raysEl, { opacity: 0, scale: 0.2 }, { opacity: 0.9, scale: 1, duration: 0.15 });
+  gsap.to(raysEl, { opacity: 0, scale: 1.5, duration: 0.6, delay: 0.15 });
+});
+
+</script>
+
+</body>
+</html>
